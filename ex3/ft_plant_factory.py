@@ -30,7 +30,17 @@ def main():
     plant3 = Plant("Cactus", 5.0, 0.5, 90)
     plant4 = Plant("Sunflower", 80.0, 0.6, 45)
     plant5 = Plant("Fern", 15.0, 0.1, 120)
-    plant1.grow()
+    print("=== Plant Factory Output ===\nCreated: ", end="")
+    plant1.show()
+    print("Created: ", end="")
+    plant2.show()
+    print("Created: ", end="")
+    plant3.show()
+    print("Created: ", end="")
+    plant4.show()
+    print("Created: ", end="")
+    plant5.show()
+
 
 if __name__ == "__main__":
     main()
