@@ -1,46 +1,46 @@
 class Plant:
     def __init__(self, name: str, height: float,
                  growPerDay: float, old: int) -> None:
-        self.name = name
-        self.growPerDay = growPerDay
+        self._name = name
+        self._growPerDay = growPerDay
         if (height < 0):
-            print(f"{self.name}: Error, height can't be negative")
-            self.height = 0.0
+            print(f"{self._name}: Error, height can't be negative")
+            self._height = 0.0
         else:
-            self.height = height
+            self._height = height
         if (old < 0):
-            print(f"{self.name}: Error, age can't be negative")
-            self.old = 0
+            print(f"{self._name}: Error, age can't be negative")
+            self._old = 0
         else:
-            self.old = old
+            self._old = old
 
     def set_height(self, new_height: float) -> None:
         if (new_height < 0):
-            print(f"{self.name}: Error, height can't be negative")
+            print(f"{self._name}: Error, height can't be negative")
             print("Height update rejected")
         else:
-            self.height = new_height
+            self._height = new_height
             print(f"Height updated: {new_height}cm")
 
     def set_age(self, new_age: int) -> None:
         if (new_age < 0):
-            print(f"{self.name}: Error, age can't be negative")
+            print(f"{self._name}: Error, age can't be negative")
             print("Age update rejected")
         else:
-            self.old = new_age
+            self._old = new_age
             print(f"Age updated: {new_age} days")
 
     def show(self) -> None:
-        print(f"{self.name}: {self.height:.1f}cm, {self.old} days old")
+        print(f"{self._name}: {self._height:.1f}cm, {self._old} days old")
 
     def grow(self) -> None:
-        self.height += self.growPerDay
+        self._height += self._growPerDay
 
     def age(self, days: int) -> None:
         count = 1
         while (count <= days):
             self.grow()
-            self.old += 1
+            self._old += 1
             count += 1
 
 
@@ -48,19 +48,19 @@ class Flower(Plant):
     def __init__(self, name: str, height: float,
                  growPerDay: float, old: int, color: str) -> None:
         super().__init__(name, height, growPerDay, old)
-        self.color = color
-        self.hasBloomed = False
+        self._color = color
+        self._hasBloomed = False
 
     def bloom(self) -> None:
-        self.hasBloomed = True
+        self._hasBloomed = True
 
     def show(self) -> None:
         super().show()
-        print(f" Color: {self.color}")
-        if (self.hasBloomed):
-            print(f" {self.name} is blooming beautifully!")
+        print(f" Color: {self._color}")
+        if (self._hasBloomed):
+            print(f" {self._name} is blooming beautifully!")
         else:
-            print(f" {self.name} has not bloomed yet")
+            print(f" {self._name} has not bloomed yet")
 
 
 class Tree(Plant):
@@ -68,15 +68,15 @@ class Tree(Plant):
                  growPerDay: float, old: int,
                  trunk_diameter: float) -> None:
         super().__init__(name, height, growPerDay, old)
-        self.trunk_diameter = trunk_diameter
+        self._trunk_diameter = trunk_diameter
 
     def produce_shade(self) -> None:
-        print(f"Tree {self.name} now produces a shade of ", end="")
-        print(f"{self.height}cm long and {self.trunk_diameter}cm wide.")
+        print(f"Tree {self._name} now produces a shade of ", end="")
+        print(f"{self._height}cm long and {self._trunk_diameter}cm wide.")
 
     def show(self) -> None:
         super().show()
-        print(f" Trunk diameter: {self.trunk_diameter}cm")
+        print(f" Trunk diameter: {self._trunk_diameter}cm")
 
 
 class Vegetable(Plant):
@@ -84,17 +84,17 @@ class Vegetable(Plant):
                  growPerDay: float, old: int,
                  harvest_season: str, nutritional_value: int) -> None:
         super().__init__(name, height, growPerDay, old)
-        self.harvest_season = harvest_season
-        self.nutritional_value = nutritional_value
+        self._harvest_season = harvest_season
+        self._nutritional_value = nutritional_value
 
     def grow(self) -> None:
         super().grow()
-        self.nutritional_value += 1
+        self._nutritional_value += 1
 
     def show(self) -> None:
         super().show()
-        print(f" Harvest season: {self.harvest_season}")
-        print(f" Nutritional value: {self.nutritional_value}")
+        print(f" Harvest season: {self._harvest_season}")
+        print(f" Nutritional value: {self._nutritional_value}")
 
 
 def main() -> None:
