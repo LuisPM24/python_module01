@@ -14,6 +14,12 @@ class Plant:
         else:
             self._old = old
 
+    def get_height(self) -> float:
+        return self._height
+
+    def get_age(self) -> int:
+        return self._old
+
     def set_height(self, new_height: float) -> None:
         if (new_height < 0):
             print(f"{self._name}: Error, height can't be negative")
